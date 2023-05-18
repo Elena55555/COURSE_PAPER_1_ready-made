@@ -53,6 +53,7 @@ public class Main {
             System.out.println(employee);
         }
     }
+    //  b ) Посчитать сумму затрат на зарплаты в месяц.
     public static void calculateSumSalaryInTheMonth(Employee[] staff) {
         double sum = 0;
         for (Employee employee : staff) {
@@ -60,6 +61,8 @@ public class Main {
         }
         System.out.println(sum);
     }
+    // с ) Найти сотрудника с минимальной зарплатой.
+
     public static Employee employeeWithBigSalary  (Employee[] staff) {
         Employee max  =  staff[0];
         for (int i = 1; i < staff.length; i++) {
@@ -69,6 +72,7 @@ public class Main {
         }
         return max;
     }
+    // d ) Найти сотрудника с максимальной зарплатой.
     public static Employee employeeWithLowSalary   (Employee[] staff) {
         Employee min  =  staff[0];
         for (int i = 1; i < staff.length; i++) {
@@ -98,6 +102,3 @@ public class Main {
         }
     }
 }
-
-
-
