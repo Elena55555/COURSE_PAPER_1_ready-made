@@ -17,115 +17,87 @@ public class Main {
         staff[8] = new Employee("Николаев Николай Николаевич", 4, 66000);
         staff[9] = new Employee("Федоров Федор Федорович", 5, 58000);
 
-        System.out.println("a ) Вывести всех сотудников" );
-
-
-
         //  a ) Вывести всех сотудников
-        String  String  =  String(staff);
-        System.out.println(String);
-
-        System.out.println("b ) Посчитать сумму затрат на зарплаты в месяц." );
+        System.out.println("a ) Вывести всех сотрудников.");
+        printListOfEmployees(staff);
 
         //  b ) Посчитать сумму затрат на зарплаты в месяц.
+        System.out.println("b ) Посчитать сумму затрат на зарплаты в месяц.");
+        calculateSumSalaryInTheMonth(staff);
 
-        double  Sum  =  Sum(staff);
-        System.out.println(Sum);
-        System.out.println("c ) Найти сотрудника с минимальной зарплатой." );
+        // с ) Найти сотрудника с минимальной зарплатой.
+        System.out.println("с ) Найти сотрудника с минимальной зарплатой.");
+        Employee employeeWithLowSalary =  employeeWithLowSalary(staff);
+        System.out.println("Сотрудник с  минимальной зарплатой : " + employeeWithLowSalary.getName());
+        System.out.println("Минимальная зарплата : " + employeeWithLowSalary.getSalary());
 
-        // c ) Найти сотрудника с минимальной зарплатой.
-        Employee minSalary= minSalary (staff);
-        System.out.println(minSalary.getSalary());
-        System.out.println(minSalary.getName());
-        System.out.println("d ) Найти сотрудника с максимальной зарплатой." );
         // d ) Найти сотрудника с максимальной зарплатой.
-        Employee maxSalary = maxSalary(staff);
-        System.out.println(maxSalary.getSalary());
-        System.out.println(maxSalary.getName());
+        System.out.println("d) Найти сотрудника с максимальной зарплатой.");
+        Employee employeeWithBigSalary = employeeWithBigSalary(staff);
+        System.out.println("Сотрудник с  максимальной зарплатой : " + employeeWithBigSalary.getName());
+        System.out.println("Максимальная зарплата : " + employeeWithBigSalary.getSalary());
 
-        System.out.println("e )Подсчитать среднее значение зарплат." );
-
-        // e )Подсчитать среднее значение зарплат .
-
-        double averageSum = averageSum(staff);
-        System.out.println(averageSum);
-
-        System.out.println("f ) Получить Ф. И. О. всех сотрудников (вывести в консоль)." );
+        // e ) Подсчитать среднее значение зарплат .//
+        System.out.println("e ) Подсчитать среднее значение зарплат.");
+        double averageSum = averageSumSalaryInTheMonth(staff);
+        System.out.println("Средняя зарплата в месяц составляет: " + averageSum);
 
         // f ) Получить Ф. И. О. всех сотрудников (вывести в консоль).
-        String  StringPersonal  =  StringPersonal(staff);
-        System.out.println(StringPersonal);
-
+        System.out.println("f ) Получить Ф. И. О. всех сотрудников (вывести в консоль).");
+        printNameOfPersonal(staff);
     }
 
     //  a ) Вывести всех сотудников
-    public  static String String    (Employee[] staff) {
+    public static void printListOfEmployees(Employee[] staff) {
         for (Employee employee : staff) {
-            System.out.println(employee );
+            System.out.println(employee);
         }
-
-        return null;
     }
-
-    //       b   Посчитать сумму затрат на зарплаты в месяц.
-
-
-    public static double  Sum (Employee[] staff) {
-
+    public static void calculateSumSalaryInTheMonth(Employee[] staff) {
         double sum = 0;
-        for (Employee employee: staff ){
+        for (Employee employee : staff) {
             sum += employee.getSalary();
         }
-        return sum  ;
+        System.out.println(sum);
     }
-    // c ) Найти сотрудника с минимальной зарплатой.
-
-    public static Employee minSalary (Employee[] staff ) {
-        Employee min = null;
-        for (Employee employee : staff) {
-            if (min == null || employee.getSalary() < min.getSalary()) {
-                min = employee;
-            }
-        }
-        return min;
-    }
-
-    // e )Подсчитать среднее значение зарплат (можно использовать для этого метод из пункта b).
-
-    public static Employee maxSalary(Employee[] staff) {
-        Employee max = null;
-        for (Employee employee : staff) {
-            if (max == null || employee.getSalary() > max.getSalary()) {
-                max = employee;
+    public static Employee employeeWithBigSalary  (Employee[] staff) {
+        Employee max  =  staff[0];
+        for (int i = 1; i < staff.length; i++) {
+            if (staff[i].getSalary() > max.getSalary() ) {
+                max = staff[i];
             }
         }
         return max;
     }
-
-    public static double averageSum (Employee[] staff)
-    {
+    public static Employee employeeWithLowSalary   (Employee[] staff) {
+        Employee min  =  staff[0];
+        for (int i = 1; i < staff.length; i++) {
+            if (staff[i].getSalary() < min.getSalary() ) {
+                min = staff[i];
+            }
+        }
+        return min;
+    }
+    // e )Подсчитать среднее значение зарплат .
+    public static double averageSumSalaryInTheMonth(Employee[] staff) {
         double sum = 0;
-        for (Employee employee : staff)
-        {
-            sum +=  employee.getSalary();
+        for (Employee employee : staff) {
+            sum += employee.getSalary();
         }
-        if (staff.length > 0)
-        {
+        if (staff.length > 0) {
             return sum / staff.length;
-        }
-        else
-        {
+        } else {
             return 0;
         }
     }
 
-    // f ) Получить Ф. И. О. всех сотрудников (вывести в консоль).
-
-    public  static String StringPersonal   (Employee[] staff) {
+    // f ) Получить Ф. И. О. всех сотрудников .
+    public static void printNameOfPersonal(Employee[] staff) {
         for (Employee employee : staff) {
-            System.out.println("Сотрудник  " + employee.getName() );
+            System.out.println("Сотрудник  " + employee.getName());
         }
-
-        return null;
     }
 }
+
+
+
